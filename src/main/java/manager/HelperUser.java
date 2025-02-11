@@ -8,11 +8,11 @@ public class HelperUser extends HelperBase{
     public HelperUser(WebDriver wd) {
         super(wd);
     }
-    public void openLoginRegistrationForm(){
+    public void openLoginForm(){
         click(By.cssSelector("a[href='/login?url=%2Fsearch']"));
     }
 
-    public void fillLoginRegistrationForm(String email,String password) {
+    public void fillLoginForm(String email,String password) {
         type(By.id("email"),email);
         type(By.id("password"),password);
     }
@@ -20,16 +20,23 @@ public class HelperUser extends HelperBase{
         click(By.cssSelector("[type='submit']"));
     }
 
-    public boolean isLogged() {
-        return isElementPresent(By.xpath("//h1[text()='Logged in']"));
+    public String getMessage() {
+        //pause(2000);
+        return wd.findElement(By.cssSelector(".dialog-container>h2")).getText();
+    }
+
+    public boolean isLogged(){
+        return isElementPresent(By.xpath("//*[text()= ' Logout ']"));
     }
 
     public void logout() {
-        click(By.cssSelector(".positive-button.ng-star-inserted"));
-        click(By.cssSelector("[href='/logout?url=%2Fsearch']"));
+        click(By.cssSelector("href='/logout?url=%2Fsearch']"));
 
     }
 
+    public void clickOkButton() {
+        click(By.cssSelector(".positive-button.ng-star-inserted"));
+    }
 }
 
 
