@@ -30,7 +30,7 @@ public class HelperUser extends HelperBase{
     }
 
     public void logout() {
-        click(By.cssSelector("href='/logout?url=%2Fsearch']"));
+        click(By.cssSelector("[href='/logout?url=%2Fsearch']"));
 
     }
 
