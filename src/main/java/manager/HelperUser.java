@@ -2,6 +2,8 @@ package manager;
 
 import models.User;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 public class HelperUser extends HelperBase{
@@ -9,6 +11,7 @@ public class HelperUser extends HelperBase{
     public HelperUser(WebDriver wd) {
         super(wd);
     }
+    //**********************************LOGIN*************************************
     public void openLoginForm(){
         click(By.cssSelector("a[href='/login?url=%2Fsearch']"));
     }
@@ -21,7 +24,7 @@ public class HelperUser extends HelperBase{
         type(By.id("email"), user.getEmail());
         type(By.id("password"), user.getPassword());
     }
-    public void submitLogin(){
+    public void submit(){
         click(By.cssSelector("[type='submit']"));
     }
 
@@ -45,8 +48,26 @@ public class HelperUser extends HelperBase{
         click(By.cssSelector(".positive-button.ng-star-inserted"));
     }
 
+//**********************************REGISTRATION************************************
+    public void openRegistrationForm() {
+   click(By.xpath("//*[text()=' Sign up ']"));
+    }
 
+    public void fillRegistrationForm(User user) {
+        type(By.id("name"),user.getFirstName());
+        type(By.id("lastName"),user.getLastName());
+        type(By.id("email"),user.getEmail());
+        type(By.id("password"),user.getPassword());
 
+    }
+
+    public void checkPolicy() {
+       // click(By.id("terms-of-use"));
+        //click(By.cssSelector("label[for='terms-of-use']"));
+        JavascriptExecutor js = (JavascriptExecutor) wd;
+        js.executeScript("document.querySelector('#terms-of-use').click();");
+
+    }
 }
 
 
