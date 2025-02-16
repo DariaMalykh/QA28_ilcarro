@@ -58,7 +58,6 @@ public class HelperUser extends HelperBase{
         type(By.id("lastName"),user.getLastName());
         type(By.id("email"),user.getEmail());
         type(By.id("password"),user.getPassword());
-
     }
 
     public void checkPolicy() {
