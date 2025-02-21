@@ -7,6 +7,6 @@ public class AddNewCarTests extends TestBase {
 
     @Test
     public void addNewCarSuccess(){
-     Car car = Car.bulder().build();
+     Car car = Car.builder().build();
     }
 }
