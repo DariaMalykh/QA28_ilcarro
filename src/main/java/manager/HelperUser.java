@@ -29,10 +29,7 @@ public class HelperUser extends HelperBase {
         click(By.cssSelector("[type='submit']"));
     }
 
-    public String getMessage() {
-        pause(2000);
-        return wd.findElement(By.cssSelector(".dialog-container>h2")).getText();
-    }
+
 
     public boolean isLogged() {
         return isElementPresent(By.xpath("//*[text()= ' Logout ']"));

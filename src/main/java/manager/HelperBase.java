@@ -44,11 +44,20 @@ public class HelperBase {
         return list.size() > 0;
     }
 
+    public String getMessage() {
+        pause(2000);
+        return wd.findElement(By.cssSelector(".dialog-container>h2")).getText();
+    }
+
     public String getErrorText() {
         return wd.findElement(By.cssSelector("div.error")).getText();
     }
 
     public boolean isYallaButtonNotActive() {
       return  isElementPresent(By.cssSelector("button[disabled]"));
+    }
+
+    public void submit() {
+        click(By.cssSelector("[type='submit']"));
     }
 }
