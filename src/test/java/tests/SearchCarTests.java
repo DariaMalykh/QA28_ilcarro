@@ -27,6 +27,15 @@ public class SearchCarTests extends TestBase {
         app.getHelperCar().submit();
         Assert.assertTrue(app.getHelperCar().isListOfCarsAppeared());
     }
+
+    @Test
+    public void negativeSearch(){
+        app.getHelperCar().searchNotValidPeriod("Rehovot","2/15/2025","2/10/2026");
+        app.getHelperCar().submit();
+        Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
+        Assert.assertTrue(app.getHelperUser().getErrorText().contains("You can't pick date before today"));
+
+    }
     @AfterMethod
     public void postCondition(){
         app.getHelperCar().navigatorByLogo();
